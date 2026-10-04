@@ -220,6 +220,16 @@ const input = document.querySelector('input, textarea, [contenteditable="true"]'
 const button = document.querySelector('button');
 
 button.onclick = async () => {
+  const texte = input.innerText.trim();
+
+  if (!texte) return;
+
+  await addDoc(messageRef, {
+    texte: texte
+  });
+
+  input.innerText = "";
+};
   const texte = input.value || input.innerText;
   if (!texte.trim()) return;
 
